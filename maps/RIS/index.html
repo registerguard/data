@@ -28,7 +28,7 @@ html, body, #googft-mapCanvas {
 		mapDiv.style.height = isMobile ? '100%' : '400px';
 		var map = new google.maps.Map(mapDiv, {
 			center: new google.maps.LatLng(44.05710463869104, -123.08576476775511),
-			zoom: 13,
+			zoom: 9,
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		});
 		map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('googft-legend-open'));
@@ -71,8 +71,10 @@ html, body, #googft-mapCanvas {
 </head>
 
 <body>
-	<h1>On top</h1>
+	<h1>Lane County restaurant inspection scores</h1>
 	<div id="googft-mapCanvas"></div>
-	<p>Below</p>
+	<p>Lane County Department of Public Health restaurant inspection scores. All data can be found <a href="http://apps.lanecounty.org/RIS/">here</a>.</p>
+	<small>Produced by <a href="mailto:rob.denton@registerguard.com">Rob Denton</a> on 6/17/14.</small>
+	<iframe width="500" height="300" scrolling="yes" frameborder="no" src="https://www.google.com/fusiontables/embedviz?viz=GVIZ&amp;t=TABLE&amp;q=select+col0%2C+col1%2C+col2%2C+col3%2C+col4+from+1w2WiVS4v_rp7e1QB6HNoHvaGk7igE1N5ZztFaiXC+order+by+col1+asc&amp;containerId=googft-gviz-canvas"></iframe>
 </body>
 </html>
