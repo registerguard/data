@@ -9,7 +9,7 @@ import json
 
 from django.core.exceptions import ImproperlyConfigured
 
-with open("secrets.json") as f:
+with open("/rgcalendar/oper/data_root/secrets.json") as f:
     secrets = json.loads(f.read())
 
 def get_secret(setting, secrets=secrets):
@@ -38,7 +38,7 @@ path.append(DJANGO_ROOT)
 
 ########## DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = False
+DEBUG = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-debug
 TEMPLATE_DEBUG = DEBUG
