@@ -4,22 +4,6 @@
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
-######### GET SECRET KEY
-import json
-
-from django.core.exceptions import ImproperlyConfigured
-
-with open("/rgcalendar/oper/data_root/secrets.json") as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    """Get the secret variable or return explicit exception."""
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "set the {0} environment variable".format(setting)
-        raise ImproperlyConfigured(error_msg)
-
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
@@ -34,6 +18,23 @@ SITE_NAME = basename(DJANGO_ROOT)
 # name in our dotted import paths:
 path.append(DJANGO_ROOT)
 ########## END PATH CONFIGURATION
+
+
+######### GET SECRET KEY
+import json
+
+from django.core.exceptions import ImproperlyConfigured
+
+with open(join(DJANGO_ROOT, '..', 'secrets.json')) as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+    """Get the secret variable or return explicit exception."""
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "set the {0} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
 
 
 ########## DEBUG CONFIGURATION
