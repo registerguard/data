@@ -8,6 +8,9 @@ from sys import path
 # Absolute filesystem path to the Django project directory:
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
 
+# Adjusted path to apps not in project tree
+PROJECT_PATH = normpath(join(DJANGO_ROOT, '..', '..', '..'))
+
 # Absolute filesystem path to the top-level project folder:
 SITE_ROOT = dirname(DJANGO_ROOT)
 
@@ -17,6 +20,8 @@ SITE_NAME = basename(DJANGO_ROOT)
 # Add our project to our pythonpath, this way we don't need to type our project
 # name in our dotted import paths:
 path.append(DJANGO_ROOT)
+
+path.append(PROJECT_PATH)
 ########## END PATH CONFIGURATION
 
 
@@ -210,6 +215,7 @@ DJANGO_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'blue_chip',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
